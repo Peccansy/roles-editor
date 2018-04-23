@@ -1,9 +1,11 @@
-import { ROLE_DELETE } from "../../actions/types";
+import { ROLE_DELETE, ROLE_ADD } from "../../actions/types";
 
-const initialState = [{ id: 1, name: 'Бухгалтер' }, { id: 2, name: 'Another' }];
+let idCounter = 0;
 
-const rolesReducer = (state = initialState, action) => {
+const rolesReducer = (state = [], action) => {
     switch (action.type) {
+        case ROLE_ADD:
+            return [...state, { id: idCounter++, name: action.name }];
         case ROLE_DELETE:
             return state.filter(r => r.id !== action.id);
         default:
