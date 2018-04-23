@@ -12,3 +12,14 @@ ReactDOM.render((
         <App />
     </Provider>
 ), document.getElementById('root'));
+store.subscribe(() => {
+    const { roles, roleMethods } = store.getState();
+    const storageRoles = localStorage.getItem('roles');
+    const storageRoleMethods = localStorage.getItem('roleMethods');
+    if (JSON.stringify(roles) !== storageRoles) {
+        localStorage.setItem('roles', JSON.stringify(roles));
+    }
+    if (JSON.stringify(roleMethods) !== storageRoleMethods) {
+        localStorage.setItem('roleMethods', JSON.stringify(roleMethods));
+    }
+});

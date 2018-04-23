@@ -1,6 +1,7 @@
 import {ROLE_DELETE, ROLE_ADD} from "../../actions/types";
 
-const rolesReducer = (state = [], action) => {
+const initialState = JSON.parse(localStorage.getItem('roles')) || [];
+const rolesReducer = (state = initialState, action) => {
     switch (action.type) {
         case ROLE_ADD:
             return [...state, {id: action.id, name: action.name}];
