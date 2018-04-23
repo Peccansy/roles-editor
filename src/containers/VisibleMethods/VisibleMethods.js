@@ -21,8 +21,6 @@ const mapDispatchToProps = (dispatch) => {
     }
 };
 
-const HOC = connect(mapStateToProps, mapDispatchToProps)(MethodsList);
-
 class VisibleMethods extends Component {
     constructor() {
         super();
@@ -40,8 +38,8 @@ class VisibleMethods extends Component {
     }
 
     render() {
-        return <HOC methods={this.state.methods}/>
+        return <MethodsList methods={this.state.methods} {...this.props}/>
     }
 }
 
-export default VisibleMethods;
+export default connect(mapStateToProps, mapDispatchToProps)(VisibleMethods);
