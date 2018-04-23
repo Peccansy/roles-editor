@@ -1,0 +1,1 @@
+export const ROLE_DELETE = 'ROLE_DELETE';
