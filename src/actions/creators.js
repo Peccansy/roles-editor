@@ -1,6 +1,6 @@
 import * as types from './types';
 
-let idCounter = 0;
+let idCounter = 1;
 
 export const deleteRole = (id) => {
     return {type: types.ROLE_DELETE, id}

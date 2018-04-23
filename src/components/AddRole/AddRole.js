@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {addRole} from "../../actions/creators";
+import './AddRole.css'
 
 let AddRole = ({dispatch}) => {
     let input;
@@ -13,7 +14,7 @@ let AddRole = ({dispatch}) => {
         input.value = '';
     };
     return (
-        <div>
+        <div className="add-role">
             <form action="#" onSubmit={submitHandler}>
                 <input ref={node => {
                     input = node;

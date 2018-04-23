@@ -5,7 +5,8 @@ import {deleteRole, changeCurrentRole} from "../../actions/creators";
 
 const mapStateToProps = (state) => {
     return {
-        roles: state.roles
+        roles: state.roles,
+        currentRoleId: state.currentRoleId,
     }
 };
 
@@ -13,6 +14,7 @@ const mapDispatchToProps = (dispatch) => {
     return {
         onItemDelete(id) {
             dispatch(deleteRole(id));
+            dispatch(changeCurrentRole(null)); // clear selection
         },
         onItemClick(id) {
             dispatch(changeCurrentRole(id));

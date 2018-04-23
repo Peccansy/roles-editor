@@ -1,19 +1,21 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
 import AddRole from './components/AddRole';
 import VisibleRoles from './components/VisibleRoles';
 import VisibleMethods from './components/VisibleMethods';
-import './App.css';
+import './App.css'
 
 class App extends Component {
   render() {
+      const methods = this.props.currentRole ? <VisibleMethods/> : null;
     return (
-        <div>
+        <div className="wrapper">
             <AddRole />
             <VisibleRoles />
-            <VisibleMethods />
+            {methods}
         </div>
     );
   }
 }
 
-export default App;
+export default connect((state) => ({ currentRole: state.currentRoleId }), null)(App);

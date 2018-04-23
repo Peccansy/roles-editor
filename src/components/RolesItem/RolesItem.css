@@ -1,0 +1,33 @@
+.roles__item {
+    cursor: pointer;
+    padding: 10px;
+    transition: background-color .3s ease-in;
+    line-height: 20px;
+    position: relative;
+    white-space: nowrap;
+    border-bottom: 1px solid black;
+}
+.roles__item:hover {
+    background-color: rgba(0,0,0,.1);
+}
+.roles__item.roles__item_active {
+    font-weight: bold;
+}
+.roles__item-name {
+    max-width: 90%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-right: 25px;
+    display: inline-block;
+    vertical-align: middle;
+}
+.roles__item-button {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    font-size: 12px;
+    height: 20px;
+    width: 20px;
+    padding: 0;
+    margin-top: -10px;
+}
