@@ -1,18 +1,22 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import MethodsList from '../MethodsList';
+import {bindMethod, unbindMethod} from "../../actions/creators";
 
 const mapStateToProps = (state, ownProps) => {
-    // const curr = state.selectedRoleId || 1;
-    // const checkedIds = state.roleMethods.filter(rm => rm.roleId === curr);
-    return Object.assign({checkedIds: []}, ownProps);
+    const curr = state.currentRoleId;
+    let checkedIds = [];
+    if (curr !== null) {
+        checkedIds = state.roleMethods.filter(rm => rm.roleId === curr).map(rm => rm.methodId);
+    }
+    return Object.assign({checkedIds, roleId: curr}, ownProps);
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onCheckChange(id) {
-            dispatch({type: 'mock'});
-            console.log(id);
+        onCheckChange(methodId, roleId, checked) {
+            const action = checked ? bindMethod(roleId, methodId) : unbindMethod(roleId, methodId);
+            dispatch(action);
         }
     }
 };
@@ -26,7 +30,12 @@ class VisibleMethods extends Component {
     }
 
     componentDidMount() {
-        const methods = [{id: 1, name: 'method'}, {id: 2, name: 'method2'}]; // get data from server, indexedDB etc...
+        const methods = [
+            {id: 1, name: 'method'},
+            {id: 2, name: 'method2'},
+            {id: 3, name: 'method3'},
+            {id: 4, name: 'method4'}
+        ]; // get data from server, indexedDB etc...
         this.setState({methods});
     }
 
