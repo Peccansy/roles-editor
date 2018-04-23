@@ -1,5 +1,5 @@
 import React from 'react';
-import MethodsItem from '../MethodsItem';
+import MethodsItem from './MethodsItem';
 
 const isChecked = (itemId, ids) => {
     return ids.some(id => id === itemId);

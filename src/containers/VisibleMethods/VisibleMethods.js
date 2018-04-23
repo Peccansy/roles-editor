@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import MethodsList from '../MethodsList';
+import MethodsList from '../../components/MethodsList/index';
 import {bindMethod, unbindMethod} from "../../actions/creators";
 
 const mapStateToProps = (state, ownProps) => {

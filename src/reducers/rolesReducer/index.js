@@ -1,4 +1,4 @@
-import {ROLE_DELETE, ROLE_ADD} from "../../actions/types";
+import {ROLE_ADD, ROLE_DELETE} from "../../actions/types";
 
 const initialState = JSON.parse(localStorage.getItem('roles')) || [];
 const rolesReducer = (state = initialState, action) => {

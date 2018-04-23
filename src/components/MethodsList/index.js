@@ -1,1 +1,1 @@
-export { default } from './MethodsList';
+export {default} from './MethodsList';
