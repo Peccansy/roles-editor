@@ -3,5 +3,6 @@ export const ROLE_ADD = 'ROLE_ADD';
 
 export const METHOD_BIND = 'METHOD_BIND';
 export const METHOD_UNBIND = 'METHOD_UNBIND';
+export const METHOD_ROLE_DID_REMOVED = 'METHOD_ROLE_DID_REMOVED';
 
 export const CURRENT_ROLE_CHANGE = 'CURRENT_ROLE_CHANGE';

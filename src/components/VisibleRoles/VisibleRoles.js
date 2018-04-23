@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import RolesList from '../RolesList';
-import {deleteRole, changeCurrentRole} from "../../actions/creators";
+import {deleteRole, changeCurrentRole, roleDidRemoved} from "../../actions/creators";
 
 const mapStateToProps = (state) => {
     return {
@@ -14,7 +14,8 @@ const mapDispatchToProps = (dispatch) => {
     return {
         onItemDelete(id) {
             dispatch(deleteRole(id));
-            dispatch(changeCurrentRole(null)); // clear selection
+            dispatch(changeCurrentRole(null));
+            dispatch(roleDidRemoved(id))// clear selection
         },
         onItemClick(id) {
             dispatch(changeCurrentRole(id));

@@ -17,9 +17,17 @@ store.subscribe(() => {
     const storageRoles = localStorage.getItem('roles');
     const storageRoleMethods = localStorage.getItem('roleMethods');
     if (JSON.stringify(roles) !== storageRoles) {
-        localStorage.setItem('roles', JSON.stringify(roles));
+        try {
+            localStorage.setItem('roles', JSON.stringify(roles));
+        } catch (e) {
+            console.log(e.message);
+        }
     }
     if (JSON.stringify(roleMethods) !== storageRoleMethods) {
-        localStorage.setItem('roleMethods', JSON.stringify(roleMethods));
+        try {
+            localStorage.setItem('roleMethods', JSON.stringify(roleMethods));
+        } catch (e) {
+            console.log(e.message);
+        }
     }
-});
+}); // on store change update localStorage
