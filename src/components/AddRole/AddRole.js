@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {addRole} from "../../actions/creators";
+import {roleAdd} from "../../actions/creators";
 import './AddRole.css'
 
 let AddRole = ({dispatch}) => {
@@ -10,7 +10,7 @@ let AddRole = ({dispatch}) => {
         if (input.value === '') {
             return;
         }
-        dispatch(addRole(input.value));
+        dispatch(roleAdd(input.value));
         input.value = '';
     };
     return (

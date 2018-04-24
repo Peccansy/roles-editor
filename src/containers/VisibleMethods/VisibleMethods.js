@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import MethodsList from '../../components/MethodsList/index';
-import {bindMethod, unbindMethod} from "../../actions/creators";
+import {methodBind, methodUnbind} from "../../actions/creators";
 
 const mapStateToProps = (state, ownProps) => {
     const curr = state.currentRoleId;
@@ -15,7 +15,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         onCheckChange(methodId, roleId, checked) {
-            const action = checked ? bindMethod(roleId, methodId) : unbindMethod(roleId, methodId);
+            const action = checked ? methodBind(roleId, methodId) : methodUnbind(roleId, methodId);
             dispatch(action);
         }
     }
