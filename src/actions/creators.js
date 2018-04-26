@@ -16,9 +16,20 @@ export const {roleDelete, roleAdd} = createActions({
     },
 });
 
+
+export const roleWillDelete = (id) => (dispatch) => {
+    dispatch(roleDelete(id));
+    dispatch(currentRoleChange(null));
+    dispatch(methodRoleDidRemoved(id));
+};
+
 export const {methodBind, methodUnbind, methodRoleDidRemoved} = createActions({
     [types.METHOD_BIND]: (roleId, methodId) => ({roleId, methodId}),
     [types.METHOD_UNBIND]: (roleId, methodId) => ({roleId, methodId}),
     [types.METHOD_ROLE_DID_REMOVED]: roleId => roleId,
 });
+export const methodDidCheck = (methodId, roleId, checked) => (dispatch) => {
+    const action = checked ? methodBind(roleId, methodId) : methodUnbind(roleId, methodId);
+    dispatch(action);
+};
 export const currentRoleChange = createAction(types.CURRENT_ROLE_CHANGE, roleId => roleId);

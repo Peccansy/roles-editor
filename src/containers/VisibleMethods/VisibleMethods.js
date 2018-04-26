@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import MethodsList from '../../components/MethodsList/index';
-import {methodBind, methodUnbind} from "../../actions/creators";
+import {methodDidCheck} from "../../actions/creators";
 
 const mapStateToProps = (state, ownProps) => {
     const curr = state.currentRoleId;
@@ -10,15 +10,6 @@ const mapStateToProps = (state, ownProps) => {
         checkedIds = state.roleMethods.filter(rm => rm.roleId === curr).map(rm => rm.methodId);
     }
     return Object.assign({checkedIds, roleId: curr}, ownProps);
-};
-
-const mapDispatchToProps = (dispatch) => {
-    return {
-        onCheckChange(methodId, roleId, checked) {
-            const action = checked ? methodBind(roleId, methodId) : methodUnbind(roleId, methodId);
-            dispatch(action);
-        }
-    }
 };
 
 class VisibleMethods extends Component {
@@ -42,4 +33,4 @@ class VisibleMethods extends Component {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(VisibleMethods);
+export default connect(mapStateToProps, {onCheckChange: methodDidCheck})(VisibleMethods);
